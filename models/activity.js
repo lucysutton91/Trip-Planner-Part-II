@@ -1,7 +1,6 @@
-
+// const db = new Sequelize('postgres://localhost:5432/tripPlanner', {logging: false});
 const Sequelize = require('sequelize');
-const db = new Sequelize('postgres://localhost:5432/tripPlanner', {logging: false});
-
+const db = require('./__db.js').db;
 
 
 const Activity = db.define('activity', {

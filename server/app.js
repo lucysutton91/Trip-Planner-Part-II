@@ -3,25 +3,22 @@ const path = require('path');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const app  = express();
-const db = require('../models/index.js').db;
-
+const db = require('../models/__db.js').db;
+const routes = require('../routes');
 
 
 (bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
+app.use('/', routes);
 
 app.use(express.static(path.join(__dirname, "..", "public")));
-
-app.use(morgan);
 
 app.use((req, res, next) => {
 	var err = new Error("Not Found");
 	err.status = 404;
 	next(err);
 })
-
-
 
 app.use((err, req, res, next) => {
 	res.status(err.status || 500)

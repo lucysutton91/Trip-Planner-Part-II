@@ -1,5 +1,6 @@
+// const db = new Sequelize('postgres://localhost:5432/tripPlanner');
+const db = require('./__db.js').db;
 const Sequelize = require('sequelize');
-const db = new Sequelize('postgres://localhost:5432/tripPlanner');
 
 const Hotel = db.define('hotel', {
 	name: {

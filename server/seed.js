@@ -1,5 +1,5 @@
 var Promise = require("bluebird");
-var db = require("../models/index.js").db;
+var db = require("../models/__db.js").db;
 var Place = require("../models/index.js").Place;
 var Hotel = require("../models/index.js").Hotel;
 var Restaurant = require("../models/index.js").Restaurant;

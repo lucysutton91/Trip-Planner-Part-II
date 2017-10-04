@@ -1,5 +1,7 @@
+// const Sequelize = require('sequelize');
+// const db = new Sequelize('postgres://localhost:5432/tripPlanner', {logging: false});
+const db = require('./__db.js').db;
 const Sequelize = require('sequelize');
-const db = new Sequelize('postgres://localhost:5432/tripPlanner', {logging: false});
 
 const Place = db.define('place', {
 	address: {
@@ -15,8 +17,7 @@ const Place = db.define('place', {
 		allowNull: false
 	},
 	phoneNumber : {
-		type: Sequelize.STRING,
-		allowNull: false
+		type: Sequelize.STRING
 	},
 	location : {
 		type: Sequelize.ARRAY(Sequelize.DECIMAL),
@@ -24,4 +25,4 @@ const Place = db.define('place', {
 	}
 })
 
-module.exports = {Place};
+module.exports = { Place };
