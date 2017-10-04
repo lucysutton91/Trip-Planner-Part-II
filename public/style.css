@@ -100,4 +100,21 @@ select {
 }
 
 
+.itin-btn {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+  background: #ff0000;
+  border: 0;
+  color: #fff;
+  float: right;
+}
 
+.itin-btn:hover {
+  background: #ed1343;
+}
+
+.itin-btn:active {
+  background: #632490;
+}

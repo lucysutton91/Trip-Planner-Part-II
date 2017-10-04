@@ -56,16 +56,21 @@ fetch('/api')
 let hotelList = document.getElementById('hotels-list');
 let activityList = document.getElementById('activities-list');
 let restaurantList = document.getElementById('restaurants-list');
-
+let newHotel;
 
 document.getElementById('hotels-add').addEventListener('click',  () => {
 	const select = document.getElementById('hotels-choices');
 	// use `.value` to get the currently selected value
 	const selectedId = select.value;
-	let newHotel = document.createElement('li');
+	newHotel = document.createElement('li');
 	newHotel.innerHTML = selectedId;
 	hotelList.appendChild(newHotel);
-	// buildMarker('hotel',)
+	let button = document.createElement('button');
+	button.innerHTML = "-";
+	button.className = "itin-btn";
+	newHotel.appendChild(button);
+
+	// build marker
 	for (let i  = 0; i < hotels.length; i ++){
 		if (hotels[i].name === selectedId) {
 			let marker = buildMarker('hotels', hotels[i].place.location);
@@ -81,7 +86,12 @@ document.getElementById('restaurants-add').addEventListener('click',  () => {
 	let newRestaurant = document.createElement('li');
 	newRestaurant.innerHTML = selectedId;
 	restaurantList.appendChild(newRestaurant);
-	// console.log(selectedId);
+	for (let i  = 0; i < restaurants.length; i++){
+		if (restaurants[i].name === selectedId) {
+			let marker = buildMarker('restaurants', restaurants[i].place.location);
+			marker.addTo(map);
+		}
+	}
 });
 
 document.getElementById('activities-add').addEventListener('click',  () => {
@@ -91,5 +101,10 @@ document.getElementById('activities-add').addEventListener('click',  () => {
 	let newActivity = document.createElement('li');
 	newActivity.innerHTML = selectedId;
 	activityList.appendChild(newActivity);
-	// console.log(selectedId);
+	for (let i  = 0; i < activities.length; i++){
+		if (activities[i].name === selectedId) {
+			let markerA = buildMarker('activities', activities[i].place.location);
+			markerA.addTo(map);
+		}
+	}
 });
